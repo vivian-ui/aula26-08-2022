@@ -94,4 +94,11 @@ function sun(n1: number, n2: number): number {
 function fullName(pessoa: { name: string; lastname: string }): string {
   return pessoa.name + '' + pessoa.lastname;
 }
-
+const appDiv7: HTMLElement = document.getElementById('app');
+appDiv7.innerHTML = `
+<h1> Function</h1>
+<h2> Soma de 2 e 3: ${sun(2, 3)}</h2>
+<h2> Soma de 11 e 329: ${sun(2, 3)}</h2>
+<h2> Meu nome completo: ${fullName({lastname: 'Larguesa', name: ????????????S})}
+<h2>
+`;
