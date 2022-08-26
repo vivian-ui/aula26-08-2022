@@ -116,3 +116,16 @@ let intervalId =  setInterval(() => {
 }, 1000)
 
 const btn = document.getElementById('app.btn');
+
+
+class Greeter {
+  greeting: string;
+  constructor(message: string){
+    this.greeting = message;
+  }
+  greet (){
+    return 'hello, ' + this.greeting;
+  }
+}
+
+const appDiv8: HTMLElement = document.getElementById
