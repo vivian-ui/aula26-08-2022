@@ -46,3 +46,13 @@ appDiv1.innerHTML = `
 <h2>Cor 1: ${color1}</h2>
 <h2>Cor 2: ${color2}</h2>
 `;
+
+let notSure: any = 0;
+notSure = 'Maybe I as a string';
+notSure = false; // okay, definitely a boolean
+
+const appDiv2: HTMLElement = document.getElementById('app');
+appDiv2.innerHTML = `
+<h1> Any variable</h1>
+<h2> ${notSure}</h2>
+`;
