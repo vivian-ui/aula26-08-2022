@@ -128,4 +128,8 @@ class Greeter {
   }
 }
 
-const appDiv8: HTMLElement = document.getElementById
+const appDiv8: HTMLElement = document.getElementById('app');
+appDiv8.innerHTML = `
+  <H1>Classes</H1>
+  <h2>${greeter.greet()}</h2>
+`;
