@@ -25,3 +25,24 @@ addDiv.innerHTML = `
 <h2> list: ${list}</h2>
 <h2>other list: ${otherList}</h2>
 `;
+
+enum Color {
+  red,
+  Green,
+  Blue,
+}
+let color1: Color = Color.Green;
+
+enum ColorWithRef {
+  Red = 10,
+  Green = 20,
+  Blue = 30,
+}
+let color2: ColorWithRef = ColorWithRef.Blue;
+
+const appDiv1: HTMLElement = document.getElementById('app');
+appDiv1.innerHTML = `
+<h1>Enumerated types</h1>
+<h2>Cor 1: ${color1}</h2>
+<h2>Cor 2: ${color2}</h2>
+`;
