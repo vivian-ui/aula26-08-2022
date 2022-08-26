@@ -56,3 +56,28 @@ appDiv2.innerHTML = `
 <h1> Any variable</h1>
 <h2> ${notSure}</h2>
 `;
+
+function warnUser(): void {
+  console.log('This is sy warning message');
+}
+
+let myFunction: void = undefined;
+unusable = null;
+
+myFunction;
+
+const appDiv4: HTMLElement = document.getElementById('app');
+appDiv4.innerHTML = `
+
+  <h1> Void</h1>
+<h2>unusable: ${unusable}</h2>
+  <h2> myFunctio: ${myFunction}</h2>
+`;
+
+declare function create(o: object | null); void;
+create({prop: 0}; // ok
+create(null); // okl
+create(42); //Erro
+create ("string"); Erro
+create(false); //Erro
+create(undefined); // ok
