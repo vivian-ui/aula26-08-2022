@@ -100,5 +100,18 @@ appDiv7.innerHTML = `
 <h2> Soma de 2 e 3: ${sun(2, 3)}</h2>
 <h2> Soma de 11 e 329: ${sun(2, 3)}</h2>
 <h2> Meu nome completo: ${fullName({lastname: 'Larguesa', name: ????????????S})}
-<h2>
+</h2>
 `;
+
+
+let title: string = "Ola, mundo!";
+let paragraph: string = "bla";
+
+let counter = 0
+
+let intervalId =  setInterval(() => {
+  counter = counter + 1;
+  const appP: HTMLElement = document. getElementById('app');
+  appP.innerHTML = "Contador: "+counter;
+}, 1000)
+
