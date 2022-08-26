@@ -115,3 +115,4 @@ let intervalId =  setInterval(() => {
   appP.innerHTML = "Contador: "+counter;
 }, 1000)
 
+const btn = document.getElementById('app.btn');
