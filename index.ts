@@ -74,15 +74,24 @@ appDiv4.innerHTML = `
 <h2> myFunctio: ${myFunction}</h2>
 `;
 
-declare function create(o: object | null); void;
-create({prop: 0}; // ok
-create(null); // okl
-create(42); //Erro
-create ("string"); //Erro
-create(false); //Erro
-create(undefined); // ok
+//declare function create(o: object | null); void;
+//create({prop: 0}; // ok
+//create(null); // okl
+//create(42); //Erro
+//create ("string"); //Erro
+//create(false); //Erro
+//create(undefined); // ok
 
 //const appDiv5: HTMLElement = document.getElementById('app')
 //appDiv5.innerHTML = `
 //<h1>Objetct</h1>
 //`;
+
+function sun(n1: number, n2: number): number {
+  return n1 + n2;
+}
+
+function fullName(pessoa: { name: string; lastname: string }): string {
+  return pessoa.name + '' + pessoa.lastname;
+}
+
