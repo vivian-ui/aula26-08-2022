@@ -1,36 +1,29 @@
-// Import stylesheets
-import './style.css';
+let title = 'Typescript Introduction Part 2';
+document.getElementById('title').innerHTML = title;
 
-// Write TypeScript code!
-let title: string = 'My App';
-const appDiv: HTMLElement = document.getElementById('app');
-appDiv.innerHTML = `<h1>${title}</h1>
-<hr>
-<p>paragrafo</p>
-`;
-console.log('Ola mundo');
-for (let i = 0; i <= 10; i++) {
-  if (i % 2 == 0) {
-    console.log(i);
-  }
-}
-document.getElementById('app.title').innerHTML = title;
-let counter: number = 0;
-
+//Array
 let list: number[] = [1, 2, 3];
 let otherList: Array<number> = [1, 2, 3];
-const addDiv: HTMLElement = document.getElementById('app');
-addDiv.innerHTML = `
-<H1>Array declaration</h1>
-<h2> list: ${list}</h2>
-<h2>other list: ${otherList}</h2>
-`;
 
+const array: HTMLElement = document.getElementById('array');
+array.innerHTML = `<h2>Array declaration</h2>
+                    <p>List: ${list}</p>
+                    <p>Other List: ${otherList}</p>`;
+
+//Tuple: elementos de tipos diferentes num mesmo array
+let me: [string, number];
+me = ['Ana Beatriz', 20];
+
+const tuple: HTMLElement = document.getElementById('tuple');
+tuple.innerHTML = `<h2>Tuple declaration</h2>
+                  <p>Eu me chamo ${me[0]} e tenho ${me[1]} anos.</p>`;
+
+//Enumerated
 enum Color {
-  red,
+  Red,
   Green,
   Blue,
-}
+} //Color é como se fosse um tipo de dado. Por padrão, contém os numeros 1, 2, 3. O texto só é um identificador
 let color1: Color = Color.Green;
 
 enum ColorWithRef {
@@ -40,96 +33,101 @@ enum ColorWithRef {
 }
 let color2: ColorWithRef = ColorWithRef.Blue;
 
-const appDiv1: HTMLElement = document.getElementById('app');
-appDiv1.innerHTML = `
-<h1>Enumerated types</h1>
-<h2>Cor 1: ${color1}</h2>
-<h2>Cor 2: ${color2}</h2>
-`;
+const enumerated: HTMLElement = document.getElementById('enumerated');
+enumerated.innerHTML = `<h2>Enumerated declaration</h2>
+                      <p>Color 1: ${color1}</p>
+                      <p>Color 2: ${color2}</p>`;
 
-let notSure: any = 0;
-notSure = 'Maybe I as a string';
-notSure = false; // okay, definitely a boolean
+//Any
+let notSure: any = 4;
+notSure = 'I think I can be a string';
+notSure = false;
 
-const appDiv2: HTMLElement = document.getElementById('app');
-appDiv2.innerHTML = `
-<h1> Any variable</h1>
-<h2> ${notSure}</h2>
-`;
+const any: HTMLElement = document.getElementById('any');
+any.innerHTML = `<h2>Any variable</h2>
+                <p>Now, this "any" is: ${notSure}</p>`;
 
+//Void
 function warnUser(): void {
-  console.log('This is sy warning message');
+  console.log('This is my warning message being used');
 }
 
-let myFunction: void = undefined;
+let functionExec: void = warnUser();
+
+let unusable: void = undefined;
 unusable = null;
 
-myFunction;
+functionExec;
 
-const appDiv4: HTMLElement = document.getElementById('app');
-appDiv4.innerHTML = `
+const myVoid: HTMLElement = document.getElementById('void');
+myVoid.innerHTML = `<h2>Void</h2>
+                    <p>unusable: ${unusable}</p>
+                    <p>functionExec: ${functionExec}</p>`;
 
-<h1> Void</h1>
-<h2>unusable: ${unusable}</h2>
-<h2> myFunctio: ${myFunction}</h2>
-`;
+//Object
+declare function createObject(theObject: object | null): void;
+/*
+createObject({ chave: 'valor' }); //Ok
+createObject(null); //Ok
+createObject(undefined); //Ok
+createObject(45); //Erro
+createObject("string"); //Erro
+createObject(false); //Erro
+*/
 
-//declare function create(o: object | null); void;
-//create({prop: 0}; // ok
-//create(null); // okl
-//create(42); //Erro
-//create ("string"); //Erro
-//create(false); //Erro
-//create(undefined); // ok
+//Type Assertions (conversão de tipos)
+let someValue: any = 'This is a string';
+let stringLenght: number = (<string>someValue).length;
 
-//const appDiv5: HTMLElement = document.getElementById('app')
-//appDiv5.innerHTML = `
-//<h1>Objetct</h1>
-//`;
+let someValue2: any = 'This is a string';
+let stringLenght2: number = (someValue2 as string).length;
 
-function sun(n1: number, n2: number): number {
+const types: HTMLElement = document.getElementById('types');
+types.innerHTML = `<h2>Type Assertions</h2>
+                  <p>Variable: ${someValue}</p>
+                  <p>Type: ${someValue}</p>`;
+
+//Functions
+function sum(n1: number, n2: number): number {
   return n1 + n2;
 }
 
-function fullName(pessoa: { name: string; lastname: string }): string {
-  return pessoa.name + '' + pessoa.lastname;
+function fullName(pessoa: { name: string; lastName: string }): string {
+  return pessoa.name + ' ' + pessoa.lastName;
 }
-const appDiv7: HTMLElement = document.getElementById('app');
-appDiv7.innerHTML = `
-<h1> Function</h1>
-<h2> Soma de 2 e 3: ${sun(2, 3)}</h2>
-<h2> Soma de 11 e 329: ${sun(2, 3)}</h2>
-<h2> Meu nome completo: ${fullName({lastname: 'Larguesa', name: ????????????S})}
-</h2>
-`;
 
+const functions: HTMLElement = document.getElementById('function');
+functions.innerHTML = `<h2>Functions</h2>
+                      <p>Soma de 2 e 3: ${sum(2, 3)}</p>
+                      <p>Nome completo: ${fullName({
+                        lastName: 'Walker',
+                        name: 'Ana Beatriz',
+                      })}</p>`;
 
-let title: string = "Ola, mundo!";
-let paragraph: string = "bla";
+//Eventos
+function alertMethod(this: HTMLElement, evento: Event) {
+  alert('Alertando com Typescript');
+}
 
-let counter = 0
+const btn = document.getElementById('btn');
+btn?.addEventListener('click', alertMethod);
 
-let intervalId =  setInterval(() => {
-  counter = counter + 1;
-  const appP: HTMLElement = document. getElementById('app');
-  appP.innerHTML = "Contador: "+counter;
-}, 1000)
+const eventos: HTMLElement = document.getElementById('events');
+eventos.innerHTML = `<h2>Events</h2>`;
 
-const btn = document.getElementById('app.btn');
-
-
+//Classes
 class Greeter {
   greeting: string;
-  constructor(message: string){
+  constructor(message: string) {
     this.greeting = message;
   }
-  greet (){
-    return 'hello, ' + this.greeting;
+  greet() {
+    return 'Hello, ' + this.greeting;
   }
 }
 
-const appDiv8: HTMLElement = document.getElementById('app');
-appDiv8.innerHTML = `
-  <H1>Classes</H1>
-  <h2>${greeter.greet()}</h2>
-`;
+let greeter = new Greeter('welcome to my Typescript Class');
+
+const classes: HTMLElement = document.getElementById('class');
+classes.innerHTML = `<h2>Class</h2>
+                    <p>${greeter.greet()}</p>`;
